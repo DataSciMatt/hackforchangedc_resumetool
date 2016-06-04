@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+
+
+
+
+{% block body %}
+
+<h1>Hi, {{ answers['a_name']}}.</h1>
+<h2>{{ answers['a_address']}}.<h2>
+
+{% endblock %}

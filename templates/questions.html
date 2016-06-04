@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+
+
+
+{% block body %}
+
+<form action="{{ url_for('build_resume') }}" method=post>
+    <dl>
+      <dt>{{ questions['q_name'] }}
+      <input type=text name=a_name>
+      <dt>{{ questions['q_address'] }}
+      <input type=text name=a_address>
+      <dd><input type=submit value=Generate>
+    </dl>
+  </form>
+
+
+{% endblock %}
