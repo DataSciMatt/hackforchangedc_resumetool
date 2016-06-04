@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
-
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
 
 
 {% block body %}
+<div class="container">
+<div class="page-header"><h1>{{ answers['q_name']}}.</h1></div>
+<h2>Objective</h2>
+<p>I am looking for employment to utilize my skills of {{answers['q_skills1']}},
+  {{answers['q_skills2']}}, {{answers['q_skills3']}}.</p>
+<h2>Education</h2>
 
-<h1>Hi, {{ answers['a_name']}}.</h1>
-<h2>{{ answers['a_address']}}.<h2>
+</div>
 
 {% endblock %}

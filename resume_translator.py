@@ -79,10 +79,13 @@ def translate(words,language):
 questions = {'q_name' : 'Name: ',
             'q_address' : 'Address in USA: ',
             'q_email' : 'Email address: ',
-            'q_objective' : 'Please give a summary of your interests. For example: I am an experienced clothing designer from Haiti interested in a career creating formal mens clothing.',
+            'q_objective' : 'What are you interested in?',
             'q_schooling' : 'What was your highest level of schooling?',
-            'q_university' : 'What University did you attend?',
-            'q_major' : 'What was your major?'}
+            'q_university' : 'What university did you attend?',
+            'q_major' : 'What was your area of study?',
+            'q_skills1' : 'First skill: ',
+            'q_skills2' : 'Second skill: ',
+            'q_skills3' : 'Third skill: ',}
 
 answers_translatable = []
 
@@ -94,8 +97,9 @@ app.config.from_object(__name__)
 @app.route('/resume', methods=['GET', 'POST'])
 def resume():
     answers = dict()
-    answers['a_name'] = request.form['a_name']
-    answers['a_address'] = request.form['a_address']
+    for key, value in request.form.iteritems():
+        answers[key] = value
+    answers_translated = translate(answers, 'English')
     return render_template('resume.html', answers=answers)
 
 
