@@ -70,24 +70,42 @@ def translateString(astring, lang):
     response = ' '.join(newlist)
     return response
 
-def translate(words,language):
+def translate(words,language,typ='questions'):
     lang = language_dict[language]
     for key in words:
-        words[key] = translateString(words[key],lang)
+        if typ == 'questions':
+            words[key] = translateString(words[key],lang)
+        else:
+            if key in answers_translatable:
+                words[key] = translateString(words[key],lang)
     return words
 
 questions = {'q_name' : 'Name: ',
             'q_address' : 'Address in USA: ',
+            'q_phone_number' : 'Phone number: ',
             'q_email' : 'Email address: ',
             'q_objective' : 'What are you interested in?',
             'q_schooling' : 'What was your highest level of schooling?',
+            'q_graduation_year' : 'When did you graduate?',
             'q_university' : 'What university did you attend?',
-            'q_major' : 'What was your area of study?',
+            'q_major' : 'What did you study?',
             'q_skills1' : 'First skill: ',
             'q_skills2' : 'Second skill: ',
-            'q_skills3' : 'Third skill: ',}
+            'q_skills3' : 'Third skill: '}
 
-answers_translatable = []
+answers_translatable = ['q_objective','q_skills1','q_skills2','q_skills3','q_major']
+questions_ordered = ['q_name',
+            'q_address',
+            'q_phone_number',
+            'q_email',
+            'q_objective',
+            'q_schooling',
+            'q_graduation_year',
+            'q_university',
+            'q_major',
+            'q_skills1',
+            'q_skills2',
+            'q_skills3']
 
 
 app = Flask(__name__)
@@ -99,7 +117,7 @@ def resume():
     answers = dict()
     for key, value in request.form.iteritems():
         answers[key] = value
-    answers_translated = translate(answers, 'English')
+    answers_translated = translate(answers, 'English',typ='answers')
     return render_template('resume.html', answers=answers)
 
 
@@ -107,7 +125,7 @@ def resume():
 def build_resume():
     language = request.form['language']
     questions_translated = translate(questions,language)
-    return render_template('questions.html', questions = questions_translated)
+    return render_template('questions.html', questions = questions_translated,questions_ordered=questions_ordered)
 
 
 @app.route('/')

@@ -9,9 +9,9 @@
 <div class="page-header"><h1>Resume questions...</h1></div>
 <form action="{{ url_for('resume') }}" method=post>
     <dl>
-      {% for key, value in questions.iteritems() %}
+      {% for key in questions_ordered %}
       <div>
-        <dt>{{ value }}
+        <dt>{{ questions[key] }}
         <input type=text name={{ key }}>
       </div>
       <p></p>
