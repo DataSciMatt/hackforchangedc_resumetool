@@ -1,4 +1,5 @@
 #from microsofttranslator import Translator
+from microsofttranslator import Translator
 from flask import Flask, request, session, g, redirect, url_for, abort, \
      render_template, flash
 client_id = ''
@@ -6,11 +7,82 @@ secret = ''
 
 #translator = Translator(client_id, secret)
 
-def translator(word_in):
-    return word_in
+client_id = 'jaredmerlo'
+secret = 'lHHzJ1gMUAjwO8z07vTcw2IW51A31SEDdNtnticV2So='
+translator = Translator(client_id, secret)
 
-questions = {'q_name' : 'What is your name?',
-            'q_address' : 'What is your address?'}
+language_dict = {'Arabic' : 'ar',
+'Bosnian (Latin)' : 'bs-Latn',
+'Bulgarian' : 'bg',
+'Catalan' : 'ca',
+'Chinese Simplified' : 'zh-CHS',
+'Chinese Traditional' : 'zh-CHT',
+'Croatian' : 'hr',
+'Czech' : 'cs',
+'Danish' : 'da',
+'Dutch' : 'nl',
+'English' : 'en',
+'Estonian' : 'et',
+'Finnish' : 'fi',
+'French' : 'fr',
+'German' : 'de',
+'Greek' : 'el',
+'Haitian Creole' : 'ht',
+'Hebrew' : 'he',
+'Hindi' : 'hi',
+'Hmong Daw' : 'mww',
+'Hungarian' : 'hu',
+'Indonesian' : 'id',
+'Italian' : 'it',
+'Japanese' : 'ja',
+'Kiswahili' : 'sw',
+'Klingon' : 'tlh',
+'Klingon (pIqaD)' : 'tlh-Qaak',
+'Korean' : 'ko',
+'Latvian' : 'lv',
+'Lithuanian' : 'lt',
+'Malay' : 'ms',
+'Maltese' : 'mt',
+'Norwegian' : 'no',
+'Persian' : 'fa',
+'Polish' : 'pl',
+'Portuguese' : 'pt',
+'Queretaro Otomi' : 'otq',
+'Romanian' : 'ro',
+'Russian' : 'ru',
+'Serbian (Cyrillic)' : 'sr-Cyrl',
+'Serbian (Latin)' : 'sr-Latn',
+'Slovak' : 'sk',
+'Slovenian' : 'sl',
+'Spanish' : 'es',
+'Swedish' : 'sv',
+'Thai' : 'th',
+'Turkish' : 'tr',
+'Ukrainian' : 'uk',
+'Urdu' : 'ur',
+'Vietnamese' : 'vi',
+'Welsh' : 'cy',
+'Yucatec Maya' : 'yua'}
+
+def translateString(astring, lang):
+    alist = astring.split(' ')
+    newlist = [i['TranslatedText'] for i in translator.translate_array(alist, lang)]
+    response = ' '.join(newlist)
+    return response
+
+def translate(words,language):
+    lang = language_dict[language]
+    for key in words:
+        words[key] = translateString(words[key],lang)
+    return words
+
+questions = {'q_name' : 'Name: ',
+            'q_address' : 'Address in USA: ',
+            'q_email' : 'Email address: ',
+            'q_objective' : 'Please give a summary of your interests. For example: I am an experienced clothing designer from Haiti interested in a career creating formal mens clothing.',
+            'q_schooling' : 'What was your highest level of schooling?',
+            'q_university' : 'What University did you attend?',
+            'q_major' : 'What was your major?'}
 
 answers_translatable = []
 
@@ -19,19 +91,24 @@ app = Flask(__name__)
 app.config.from_object(__name__)
 
 
-@app.route('/build_resume', methods=['GET', 'POST'])
-def build_resume():
+@app.route('/resume', methods=['GET', 'POST'])
+def resume():
     answers = dict()
     answers['a_name'] = request.form['a_name']
     answers['a_address'] = request.form['a_address']
     return render_template('resume.html', answers=answers)
 
 
+@app.route('/build_resume', methods=['GET', 'POST'])
+def build_resume():
+    language = request.form['language']
+    questions_translated = translate(questions,language)
+    return render_template('questions.html', questions = questions_translated)
+
+
 @app.route('/')
 def translator_page():
-    for question in questions:
-
-    return render_template('questions.html', questions = questions)
+    return render_template('landing_page.html',languages = sorted(language_dict.keys()))
 
 
 if __name__ == '__main__':

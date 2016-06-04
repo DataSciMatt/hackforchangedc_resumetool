@@ -6,12 +6,13 @@
 
 {% block body %}
 
-<form action="{{ url_for('build_resume') }}" method=post>
+<form action="{{ url_for('resume') }}" method=post>
     <dl>
-      <dt>{{ questions['q_name'] }}
-      <input type=text name=a_name>
-      <dt>{{ questions['q_address'] }}
-      <input type=text name=a_address>
+      {% for key, value in questions.iteritems() %}
+        <dt>{{ questions }}
+        <input type=text name=a_name>
+        <dt>{{ questions['q_address'] }}
+        <input type=text name=a_address>
       <dd><input type=submit value=Generate>
     </dl>
   </form>
