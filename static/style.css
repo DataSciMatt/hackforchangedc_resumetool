@@ -1,3 +1,6 @@
 
 a, h1, h2       { color: #377ba8; }
 #header       { color: #377ba8; }
+.jumbotron {
+    min-height: 400px;
+}
