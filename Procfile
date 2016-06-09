@@ -1,1 +1,1 @@
-web: python resume_translator.py
+web: gunicorn resume_translator:app --log-file -
