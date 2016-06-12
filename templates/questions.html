@@ -17,7 +17,13 @@
       <div class="question" id = {{ loop.index }}>
         {{ questions[key] }}
         <input class="response form-control" id = "r{{ loop.index }}" type=text name={{ key }}>
-        Press enter to continue...
+        <p>Press enter to continue...<p>
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" aria-valuenow="{{ loop.index}}"
+            aria-valuemin="0" aria-valuemax="100" style="width:{{ (loop.index - 1)*9 }}%">
+
+          </div>
+        </div>
       </div>
       <p></p>
       {% endfor %}
