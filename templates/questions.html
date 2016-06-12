@@ -9,18 +9,18 @@
 <div class="container">
 <div class="page-header"><h1>Resume questions...</h1></div>
 
-<h1 id = "questions">Hello</h1>
+<div id="questions">
 
 <form action="{{ url_for('resume') }}" method=post>
     <dl>
       {% for key in questions_ordered %}
-      <div>
-        <dt>{{ questions[key] }}
-        <input type=text name={{ key }}>
+      <div class="question" id = {{ loop.index }}>
+        {{ questions[key] }}
+        <input class="response form-control" id = "r{{ loop.index }}" type=text name={{ key }}>
       </div>
       <p></p>
       {% endfor %}
-      <dd><button type=submit class="btn btn-default">Build Resume</button>
+      <dd><button type=submit class="btn-resume btn btn-default">Build Resume</button>
     </dl>
 </form>
 
