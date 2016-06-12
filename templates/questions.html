@@ -17,6 +17,7 @@
       <div class="question" id = {{ loop.index }}>
         {{ questions[key] }}
         <input class="response form-control" id = "r{{ loop.index }}" type=text name={{ key }}>
+        Press enter to continue...
       </div>
       <p></p>
       {% endfor %}

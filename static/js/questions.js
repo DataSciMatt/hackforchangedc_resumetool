@@ -17,7 +17,7 @@ $(document).ready(function(){
   // load first question
   // $('.question#1').show();
   $('.question#1').fadeIn(1500);
-  $('.response#r1').focus();
+  $('.response#r1').show().focus();
   $('.question').each(function( i ) {
     $('.response#r' + i).delay(1300).focus();
     $('body').on('keypress', '.question#' + i, function(e) {
@@ -31,11 +31,11 @@ $(document).ready(function(){
           else {
             e.preventDefault();
           }
-          $('.question#' + i).fadeOut(100);
-          $('.question#' + ++i).delay(200).fadeIn(1000).focus();
+          $('.question#' + i).hide();
+          $('.question#' + ++i).fadeIn(1000).focus();
           // $('.question#' + i).fadeIn(1000);
           // $('.response#r' + i).delay(200);
-          $('.response#r' + i).delay(1301).focus();
+          $('.response#r' + i).focus();
        }
     });
   });
