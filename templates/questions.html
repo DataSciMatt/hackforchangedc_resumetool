@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
-<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
 <script src="{{ url_for('static', filename = 'js/jquery-3.0.0.min.js') }}"></script>
 <script src="{{ url_for('static', filename = 'js/questions.js') }}"></script>
 
@@ -15,11 +15,11 @@
     <dl>
       {% for key in questions_ordered %}
       <div class="question" id = {{ loop.index }}>
-        {{ questions[key] }}
+        <p>{{ questions[key] }}</p>
         <input class="response form-control" id = "r{{ loop.index }}" type=text name={{ key }}>
-        <p>Press enter to continue...<p>
+        <p>Press enter to continue...</p>
         <div class="progress">
-          <div class="progress-bar" role="progressbar" aria-valuenow="{{ loop.index}}"
+          <div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="{{ loop.index}}"
             aria-valuemin="0" aria-valuemax="100" style="width:{{ (loop.index - 1)*9 }}%">
 
           </div>

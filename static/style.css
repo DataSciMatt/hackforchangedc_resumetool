@@ -1,6 +1,60 @@
-
-a, h1, h2       { color: #377ba8; }
-#header       { color: #377ba8; }
-.jumbotron {
-    min-height: 400px;
+/*https://coolors.co/app/dcdcdd-c5c3c6-46494c-4c5c68-1985a1*/
+/*a, h1, h2, h3       { color: #377ba8; }*/
+a {
+  color : #1985A1;
+}
+a:hover {
+  color : #46494C;
+}
+textarea:focus, input:focus, .uneditable-input:focus {
+    border-color: #1986A1 !important;
+    box-shadow: 0 1px 1px #1986A1 inset, 0 0 8px #1986A1 !important;
+    outline: 0 none !important;
+}
+.page-header {
+  color : #4C5C68;
+}
+#questions {
+  color : #46494C;
+}
+h1 { font-size : 5em;}
+h3 { font-size : 2em;}
+.bg-1       {
+  background-color: #1985A1;
+  color : #DCDCDD;
+  padding-top: 150px;
+  padding-bottom: 150px;
+ }
+.margin {margin-bottom: 45px;}
+.content {
+  color : #DCDCDD;
+  /*background-color: #46494C;*/
+  background-color: #4C5C68;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+.about {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+.form-group {
+  margin: auto;
+  max-width : 200px;
+}
+.progress-bar-custom {
+  background : #1985A1;
+}
+body {
+  background-color: #DCDCDD;
+}
+p {font-size: 16px;}
+.btn-custom {
+  color : #46494C;
+  background : #DCDCDD;
+}
+.btn-custom:hover {
+  background : #C5C3C6;
+}
+.btn-custom:active{
+  background : #1985A1;
 }
