@@ -7,16 +7,84 @@
 {% block body %}
 <div class="container">
 <div class="page-header"><h1>{{ answers['q_name']}}</h1></div>
-<p>{{ answers['q_address'] }}</p>
-<p>{{ answers['q_email'] }}</p>
-<p>{{ answers['q_phone_number'] }}</p>
-<h2>Objective</h2>
+<div class="row">
+  <div class="col-sm-6" >
+    <p>{{ answers['q_address'] }}<br />
+    Washington, DC</p>
+  </div>
+  <div class="col-sm-6" align="right">
+    <p>{{ answers['q_email'] }}<br />
+    {{ answers['q_phone_number'] }}</p>
+  </div>
+</div>
+<h2>Career Objective</h2>
 <p>I am interested in {{ answers['q_objective']}} looking for
   employment to utilize my skills of {{answers['q_skills1']}},
   {{answers['q_skills2']}}, and {{answers['q_skills3']}}.</p>
-<h2>Education</h2>
-<p>{{ answers['q_university']}} - {{ answers['q_graduation_year']}}</p>
-<p>{{ answers['q_major']}}</p>
+
+  <hr class="divider">
+  <h2>Education</h2>
+  <div class="row">
+    <div class="col-sm-6" >
+      <p>{{ answers['q_university']}}</p>
+    </div>
+    <div class="col-sm-6" align="right">
+      <p>{{ answers['q_major']}}<br />
+        {{ answers['q_graduation_year']}}</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+  <h2>Work Experience</h2>
+  <!-- one for each job -->
+  <div class="row">
+    <div class="col-sm-6" >
+      <h5>World Bank</h5>
+      <p>Washington, DC</p>
+    </div>
+    <div class="col-sm-6" align="right">
+      <h5>Director of Marketing</h5>
+      <p>May 2012 - Present</p>
+    </div>
+  </div>
+  <h5>Accomplishments</h5>
+  <li>Created 2016 Olympics campaign</li>
+  <li>Oversees and approves budget</li>
+  <li>Manages emerging and new market analysis</li>
+  <br />
+
+  <div class="row">
+    <div class="col-sm-6" >
+      <h5>Microsoft</h5>
+      <p>Washington, DC</p>
+    </div>
+    <div class="col-sm-6" align="right">
+      <h5>Marketing Executive</h5>
+      <p>May 2010 - May 2012</p>
+    </div>
+  </div>
+  <h5>Accomplishments</h5>
+  <li>Created Windows 10 campaign for colleges and universities</li>
+  <li>Provided requirements to successfully market Windows 360 platform to federal agencies</li>
+  <li>Launched the Microsoft Surface campaign</li>
+  <br />
+
+  <div class="row">
+    <div class="col-sm-6" >
+      <h5>Cartier Foundation of Contemporary Art</h5>
+      <p>Paris, France</p>
+    </div>
+    <div class="col-sm-6" align="right">
+      <h5>Marketing Internship</h5>
+      <p>May 2006 - May 2010</p>
+    </div>
+  </div>
+  <h5>Accomplishments</h5>
+  <li>Created campaigns to attract new patrons</li>
+  <li>Assisted the marketing director with daily task</li>
+  <li>Worked on budgets and performed project management</li>
+  <br />
+
 </div>
 
 {% endblock %}
