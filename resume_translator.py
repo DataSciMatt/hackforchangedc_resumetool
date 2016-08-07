@@ -133,7 +133,7 @@ def translator_page():
     return render_template('landing_page.html',languages = sorted(language_dict.keys()))
 
 @app.route('/resume_prebuilt')
-def translator_page():
+def resume_prebuilt():
     return render_template('resume_pretty.html')
 
 if __name__ == '__main__':
